@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Register Page</title>
+<style type="text/css">
+body {
+	background-color: #99ff00;
+}
+
+#snd-div {
+	border: solid 5px black;
+	width: 400px;
+	height: 450px;
+	padding: 50px;
+	font-size: 20px;
+	margin-left: 410px;
+	margin-top: 30px;
+	background-color: rgb(189, 156, 23);
+}
+
+#trd-div {
+	margin-left: 40px;
+	margin-top: -30px;
+}
+
+label {
+	font-family: courier;
+	color: #000000;
+	font-weight: bold;
+}
+
+input[type="text"], [type="email"], [type="password"] {
+	height: 30px;
+	width: 260px;
+	outline-width: 5px;
+	outline-color: lime;
+}
+
+input[type="submit"] {
+	height: 40px;
+	width: 265px;
+	background-color: #c0c0c0;
+	font-size: 17px;
+	color: blue;
+	border: none;
+	text-transform: uppercase;
+}
+
+input[type="submit"]:hover {
+	border: 2px solid lime;
+}
+</style>
+</head>
+<body>
+	<div id="fst-div">
+		<div id="snd-div">
+			<div id="trd-div">
+				<form id="frm-rg" action="Welcome.jsp" onsubmit="return validate()"
+					method="post">
+					<label for="name">Name : </label><br> <input type="text"
+						id="name" name="name" maxlength="25" autofocus><br> <br>
+					<label for="mobile">Mobile :</label><br> <input type="text"
+						id="mobile" name="mobile" maxlength="10"><br> <br>
+					<label for="email">Email-Id :</label><br> <input type="email"
+						name="email" id="email"><br> <br> <label
+						for="pass">Password :</label><br> <input type="password"
+						name="pass" id="pass"><br> <br> <label
+						for="cpass">Confirm-Password :</label><br> <input
+						type="password" name="cpass" id="cpass"><br> <br>
+					<input type="submit" value="Register">
+				</form>
+				<br> <input type="submit"
+					onclick="location.href='LoginPage.jsp'" value="Login">
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function validate() {
+			pattern1 = /^[A-Za-z]+$/
+			pattern2 = /^[6-9][0-9]{9}$/
+			pattern3 = /^([A-Za-z0-9])+$/
+			pattern4 = /^((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%&*?]).{8,})+$/
+
+			var x = document.getElementsByTagName('input');
+
+			/*Name Field*/
+
+			if (x[0].value == "") {
+				alert("Fill the Name Field");
+				return false;
+			}
+
+			if (!pattern1.test(x[0].value)) {
+				alert("Please,Using Alphabets only in Name Field");
+				x[0].value = "";
+				return false;
+			}
+
+			/*Mobile  Number Field*/
+
+			if (x[1].value == "") {
+				alert("Please, Fill the Mobile Field");
+				return false;
+			}
+
+			if (!pattern2.test(x[1].value)) {
+				alert("Please,Enter Your 10 Digit Mobile Number Correctly");
+				return false;
+			}
+
+			if (x[1].value.length < 10) {
+				alert("Your Mobile Number length is Lessthan 10 Digit");
+				return false;
+			}
+
+			/*Email Field*/
+			if (x[2].value == "") {
+				alert("Please,Fill the Email Field");
+				return false;
+			}
+
+			/*Password Field*/
+
+			if (x[3].value == "") {
+				alert("Please,Fill the Password Field");
+				return false;
+			}
+
+			if (!pattern4.test(x[3].value)) {
+				alert("Must Using A-Z a-z 0-9 and Special Characters in Password Field");
+				return false;
+			}
+
+			/*Confirm Password Field*/
+
+			if (x[4].value == "") {
+				alert("Please,Fill the Confirm Password Field");
+				return false;
+			}
+
+			/*Password Checking Field*/
+			if (x[3].value != x[4].value) {
+				alert("Please check,the Password and Confirm_Password are Same!!");
+				return false;
+			}
+
+		}
+	</script>
+</body>
+</html>
